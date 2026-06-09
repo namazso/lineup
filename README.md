@@ -49,6 +49,8 @@ For in-browser display, you can convert the files to AVIF with no fidelity loss:
 ffmpeg -i conventional_aligned.tif -pix_fmt + -c:v libaom-av1 -crf 0 -b:v 0 -cpu-used 0 conventional_aligned.avif
 ```
 
+After this, you can use online image diff tools with the outputs. [Example](https://imgcmp.com/compare#H4sIAA1BKGoAA7WRQYvCQAyF_0qZszR67XV3WdjLHtybFInT2A5MM2WScWUX_7tjK6Lg0d5CeC9f8vJv1KknU5mf1EqxXq4-Vsuq-HJ8pMYsjIQULYmpNmY9lrn3rR3FAr1redR8-rBDf2vU2WWJJ9Nb4AOxusDos_SdbGjoIknRXwQb06kOUgFE_C1bp13aJaFoA2v2lTb0wNjjnwTwjikNEGkv0BE2Aj2KUgQ6Yj94gmy6wUo8uH0mvnB8My6_vd45O2DbjrlOnHrx0qQm0gwn3L9gxqSeYR7zqk9n3B1J0dsCAAA).
+
 ## What it does
 
 1. **Geometry.** Models the mapping as `comp_x = s*ref_x + t_y`: one global horizontal scale `s` (found by maximizing summed per-row normalized cross-correlation), plus a horizontal shift `t_y` per row from sub-pixel NCC. The comparand is resampled onto the reference grid with cubic interpolation.
