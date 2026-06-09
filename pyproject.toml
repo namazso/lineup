@@ -1,0 +1,23 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "lineup"
+version = "0.1.0"
+description = "Warp a comparand TIFF onto a reference TIFF's grid for side-by-side diffing"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "numpy",
+    "scipy",
+]
+
+[project.scripts]
+lineup = "lineup:_cli"
+
+[tool.hatch.build.targets.wheel]
+only-include = ["lineup.py"]
+
+[tool.hatch.build.targets.sdist]
+include = ["lineup.py", "README.md"]
